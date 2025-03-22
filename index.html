@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Personal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body.dark-mode {
+            background-color: #222;
+            color: white;
+        }
+
+        .footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome To Website Personal</h1>
+        <p>Mohamad Rafi Ardiansyah</p>
+    </header>
+    
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Kontak</a>
+    </nav>
+
+    <main>
+        <section class="profile">
+            <img src="profil.jpg" alt="Foto Profil">
+            <h2>Halo, Saya Mohamad Rafi Ardiansyah!</h2>
+            <p>Selamat datang di website personal saya.</p>
+            <p>Saya adalah mahasiswa Universitas Muhammadiyah Surakarta Dengan jurusan Teknik Informatika</p>
+            <p>Sekarang Saya Semester 4 dan saya sedang mempelajari MK Pemrograman WEB</p>
+            <p>Saya lahir di Subang Jawa Barat Tanggal 1-10-2005</p>
+        </section>
+
+        <section class="cta">
+            <a href="portfolio.html" class="button">Lihat Portfolio</a>
+        </section>
+    </main>
+
+    <div class="footer">
+        © 2025 Mohamad Rafi A. All rights reserved.
+        <button id="theme-toggle">🌙 Mode Gelap</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            if (!toggleButton) {
+                console.error("Element #theme-toggle tidak ditemukan!");
+                return;
+            }
+
+            // Cek localStorage apakah mode gelap sudah aktif sebelumnya
+            if (localStorage.getItem("darkMode") === "enabled") {
+                body.classList.add("dark-mode");
+                toggleButton.textContent = "☀️ Mode Terang";
+            }
+
+            // Event listener untuk tombol mode gelap/terang
+            toggleButton.addEventListener("click", function () {
+                if (body.classList.contains("dark-mode")) {
+                    body.classList.remove("dark-mode");
+                    localStorage.setItem("darkMode", "disabled");
+                    toggleButton.textContent = "🌙 Mode Gelap";
+                } else {
+                    body.classList.add("dark-mode");
+                    localStorage.setItem("darkMode", "enabled");
+                    toggleButton.textContent = "☀️ Mode Terang";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
